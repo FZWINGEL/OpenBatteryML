@@ -134,6 +134,7 @@ Let's trace how your PyTorch `Dataset` would fetch all data for cycle **100** of
 ## Repository Structure
 
 Here is a description of the key files and directories in this project.
+```
 .
 ├── .gitignore             # Configures Git to ignore transient files (e.g., pycache, datasets).
 ├── README.md              # Main documentation file for the project (this file).
@@ -149,16 +150,15 @@ Here is a description of the key files and directories in this project.
 │
 ├── src/                   # Contains all the source code for the data processing pipeline.
 │   ├── main.py            # The main executable script to run the entire processing pipeline.
-│   │
 │   ├── parsers/           # A package containing modules to parse each raw dataset format.
 │   │   ├── nasa_pcoe_parser.py # Specific parser for the NASA PCoE dataset.
 │   │   ├── calce_parser.py     # Specific parser for the CALCE dataset.
 │   │   └── hnei_parser.py      # Specific parser for the HNEI dataset.
-│   │
 │   └── utils/             # A package for shared, reusable utility functions.
 │       ├── schema.py          # Defines and validates the unified Parquet data schemas.
 │       └── processing_helpers.py # Contains common functions for resampling, RUL calculation, etc.
 │
 └── tests/                 # Contains all tests to ensure code correctness and data integrity.
-├── test_parsers.py    # Unit tests for each individual data parser.
-└── test_processing.py # Integration tests for the complete data processing pipeline.
+    ├── test_parsers.py    # Unit tests for each individual data parser.
+    └── test_processing.py # Integration tests for the complete data processing pipeline.
+```
