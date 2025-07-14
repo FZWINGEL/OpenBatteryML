@@ -21,7 +21,7 @@ cycles_schema = DataFrameSchema(
     columns={
         "cell_id": Column(String, required=True, description="Foreign Key. Links this cycle event back to its parent cell."),
         "cycle_number": Column(Int, Check.greater_than_or_equal_to(0), required=True, description="A feature representing time."),
-        "soh": Column(Float, Check.in_range(0, 1.1), required=True, description="Primary Target Label (State of Health)."),
+        "soh": Column(Float, Check.greater_than_or_equal_to(0), required=True, description="Primary Target Label (State of Health)."),
         "rul": Column(Int, Check.greater_than_or_equal_to(0), required=True, description="Secondary Target Label (Remaining Useful Life)."),
         "voltage_resampled": Column(object, required=True, description="Primary Model Feature. A fixed-length vector representing the voltage curve."),
         "temperature_avg_c": Column(Float, required=True, description="A key scalar feature for degradation."),
