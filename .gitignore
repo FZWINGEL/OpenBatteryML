@@ -1,3 +1,2 @@
 # Ignore all raw datasets
-data/raw/nasa_pcoe
-data/processed
+data/*
