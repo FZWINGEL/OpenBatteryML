@@ -168,14 +168,15 @@ class NasaPcoeParser:
                 )
 
                 if impedance_vec is not None:
+                    impedance_arr = np.asarray(impedance_vec, dtype=np.complex64).flatten()
                     eis_rows.append(
                         {
                             "cell_id": full_cell_id,
                             "cycle_number": logical_cycle_num,
                             # NASA PCoE impedance files omit the frequency axis.
                             "frequency_hz": np.array([], dtype=np.float32),
-                            "impedance_real_ohm": np.real(impedance_vec).flatten().astype(np.float32),
-                            "impedance_imag_ohm": np.imag(impedance_vec).flatten().astype(np.float32),
+                            "impedance_real_ohm": np.real(impedance_arr).flatten().astype(np.float32),
+                            "impedance_imag_ohm": np.imag(impedance_arr).flatten().astype(np.float32),
                         }
                     )
 
@@ -295,7 +296,11 @@ class NasaPcoeParser:
         rul_values = cycles_with_eol.groupby("cell_id", group_keys=False).apply(_calculate_rul_for_group)
 
         # Assign the calculated RUL values back to the main dataframe
-        self.cycles_df["rul"] = rul_values
+        self.cycles_df["rul"] = (
+            self.cycles_df
+            .groupby("cell_id")["cycle_number"]
+            .transform(lambda x: x.max() - x)
+        )
 
         # Drop rows where SOH is NaN, as they are not useful for training
         self.cycles_df.dropna(subset=["soh"], inplace=True)

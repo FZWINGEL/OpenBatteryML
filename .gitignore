@@ -1,2 +1,3 @@
 # Ignore all raw datasets
 data/*
+mock_processed_data
