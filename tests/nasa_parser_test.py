@@ -120,8 +120,8 @@ def test_execute_end_to_end_multi_file(tmp_dirs):
     assert list(c2["rul"]) == [1, 0]
 
     # has_eis_data flags
-    assert c1.iloc[0]["has_eis_data"] is True
-    assert c1.iloc[1]["has_eis_data"] is False
+    assert c1.iloc[0]["has_eis_data"]
+    assert not c1.iloc[1]["has_eis_data"]
 
     # Voltage resampled length & dtype
     assert all(len(v) == 1024 for v in cycles_df["voltage_resampled"])
