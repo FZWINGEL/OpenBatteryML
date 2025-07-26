@@ -332,7 +332,7 @@ class NasaPcoeParser:
             "dataset_source": "nasa_pcoe",
             "chemistry": "LCO",
             "rated_capacity_ah": 2.0,
-            "end_of_life_soh": 0.7,
+            "end_of_life_soh": 0.8,
         }
         self.cells_df = pd.concat([self.cells_df, pd.DataFrame([cell_info])], ignore_index=True)
 

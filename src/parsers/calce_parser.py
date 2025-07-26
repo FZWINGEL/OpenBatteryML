@@ -55,7 +55,7 @@ LOGGER = logging.getLogger(__name__)
 logging.basicConfig(level=logging.INFO, format="%(levelname)s | %(name)s | %(message)s")
 
 
-_EOL_SOH = 0.7  # configurable end-of-life threshold for SOH
+_EOL_SOH = 0.8  
 _NUM_RESAMPLE_POINTS = 1024
 _MEDFILT_KERNEL = 21  # must be odd
 
